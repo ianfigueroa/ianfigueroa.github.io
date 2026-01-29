@@ -181,9 +181,9 @@
         }
 
         .photo-frame {
-            width: 300px;
-            height: 380px;
-            border-radius: 20px;
+            width: 340px;
+            height: 420px;
+            border-radius: 16px;
             position: relative;
             display: flex;
             align-items: center;
@@ -218,11 +218,10 @@
 
         /* If image doesn't have transparent bg, use this frame style */
         .photo-frame.with-bg {
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
             overflow: hidden;
         }
 
@@ -235,6 +234,7 @@
             object-position: center top;
             transform: none;
             filter: none;
+            border-radius: 16px;
         }
 
         .photo-frame.with-bg:hover img {
@@ -498,8 +498,8 @@
             .hero-buttons { justify-content: center; }
             .photo-wrapper { order: -1; }
             .photo-frame { 
-                width: 250px; 
-                height: 300px; 
+                width: 280px; 
+                height: 350px; 
             }
             .bento-grid { grid-template-columns: 1fr; }
             .projects-grid { grid-template-columns: 1fr; }
