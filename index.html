@@ -577,7 +577,9 @@
 
         <div class="contact-section">
             <!-- IMPORTANT: If using Formspree, replace the action URL below -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="contact-form">
+            <form name="contact" method="POST" data-netlify="true" class="contact-form">
+                <input type="hidden" name="form-name" value="contact">
+
                 <div class="form-grid">
                     <div class="form-group">
                         <label>Name</label>
