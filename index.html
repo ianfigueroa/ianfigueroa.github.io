@@ -15,7 +15,7 @@
             --border-hover: rgba(255, 255, 255, 0.2);
             --text: #ffffff;
             --text-muted: #9ca3af;
-            --accent: #38bdf8; /* Electric Blue (Quant/Tech feel) */
+            --accent: #38bdf8;
             --glow: rgba(56, 189, 248, 0.15);
         }
 
@@ -33,7 +33,6 @@
             overflow-x: hidden;
         }
 
-        /* CANVAS BACKGROUND */
         canvas {
             position: fixed;
             top: 0;
@@ -41,11 +40,9 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            /* Subtle fade at bottom to blend with footer */
             mask-image: linear-gradient(to bottom, black 80%, transparent);
         }
 
-        /* Container */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -54,7 +51,6 @@
             z-index: 1;
         }
 
-        /* Navigation */
         nav {
             padding: 40px 0;
             display: flex;
@@ -89,7 +85,7 @@
             color: var(--accent);
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
             display: grid;
             grid-template-columns: 1.4fr 1fr;
@@ -123,7 +119,7 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem; /* Slightly adjusted size for cleaner wrap */
+            font-size: 3.5rem;
             line-height: 1.1;
             font-weight: 800;
             letter-spacing: -2px;
@@ -177,7 +173,7 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* Photo Styling - Glass Frame */
+        /* Photo */
         .photo-wrapper {
             position: relative;
             display: flex;
@@ -209,11 +205,8 @@
             filter: grayscale(0%) contrast(1);
         }
 
-        /* Section Headers */
+        /* New Headers - Left Aligned "System Log" style */
         .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: end;
             margin-bottom: 40px;
             border-bottom: 1px solid var(--border);
             padding-bottom: 20px;
@@ -222,15 +215,20 @@
         .section-title {
             font-size: 24px;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .section-number {
             font-family: 'JetBrains Mono', monospace;
             color: var(--accent);
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.8;
         }
 
-        /* Bento Grid */
+        /* Cards */
         .bento-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr;
@@ -245,12 +243,15 @@
             padding: 32px;
             backdrop-filter: blur(20px);
             transition: all 0.3s ease;
+            /* Added Subtle Pattern for Texture */
+            background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
 
         .card:hover {
-            border-color: var(--border-hover);
+            border-color: var(--accent);
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 40px -10px rgba(56, 189, 248, 0.1);
         }
 
         .card h3 {
@@ -265,7 +266,6 @@
             margin-bottom: 20px;
         }
 
-        /* Tech Pills */
         .tech-list {
             display: flex;
             flex-wrap: wrap;
@@ -289,19 +289,20 @@
             background: var(--glow);
         }
 
-        /* Projects - Horizontal Slider with Fade */
+        /* Projects Scroll */
         .projects-container {
             position: relative;
             margin-bottom: 120px;
         }
 
+        /* Fade overlay for scroll hint */
         .projects-container::after {
             content: '';
             position: absolute;
             top: 0;
             right: 0;
             height: 100%;
-            width: 100px;
+            width: 150px;
             background: linear-gradient(to right, transparent, var(--bg));
             pointer-events: none;
         }
@@ -311,42 +312,48 @@
             gap: 30px;
             overflow-x: auto;
             padding-bottom: 40px;
+            padding-right: 100px; /* Space for the fade */
             scrollbar-width: none;
+            scroll-snap-type: x mandatory; /* Snapping effect */
         }
         
         .projects-scroll::-webkit-scrollbar { display: none; }
 
         .project-card {
-            min-width: 480px;
+            min-width: 500px; /* Slightly wider */
             background: var(--card-bg);
             border: 1px solid var(--border);
             border-radius: 16px;
             overflow: hidden;
             backdrop-filter: blur(10px);
             transition: all 0.4s;
+            scroll-snap-align: start; /* Snap alignment */
         }
 
         .project-card:hover {
             border-color: var(--accent);
-            box-shadow: 0 10px 30px var(--glow);
+            box-shadow: 0 10px 40px -10px var(--glow);
         }
 
         .project-img {
-            height: 260px;
+            height: 280px;
             width: 100%;
             overflow: hidden;
             border-bottom: 1px solid var(--border);
+            position: relative;
         }
 
+        /* FIX: Object-position top ensures dashboards don't look weird */
         .project-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; 
+            object-position: top center; 
             transition: transform 0.6s;
         }
 
         .project-card:hover .project-img img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .project-content {
@@ -375,7 +382,7 @@
             color: var(--accent);
         }
 
-        /* Contact Form */
+        /* Contact */
         .contact-section {
             max-width: 600px;
             margin: 0 auto 100px;
@@ -446,7 +453,6 @@
             border-top: 1px solid var(--border);
         }
 
-        /* Responsive */
         @media (max-width: 900px) {
             .hero { grid-template-columns: 1fr; text-align: center; gap: 40px; }
             .hero h1 { font-size: 3rem; }
@@ -461,7 +467,6 @@
 </head>
 <body>
 
-    <!-- Animated Particle Background -->
     <canvas id="bg-canvas"></canvas>
 
     <nav class="container">
@@ -478,7 +483,6 @@
         <section class="hero">
             <div class="hero-content">
                 <div class="role-pill">Software Developer</div>
-                <!-- CHANGED HEADLINE HERE -->
                 <h1>Building High-Performance<br>Trading Systems.</h1>
                 <p>I build quantitative tools and low-latency systems. Focused on speed, reliability, and cleaner code.</p>
                 <div class="hero-buttons">
@@ -495,18 +499,15 @@
 
         <!-- About & Technologies -->
         <div class="section-header" id="about">
-            <h2 class="section-title">About & Technologies</h2>
-            <span class="section-number">01</span>
+            <h2 class="section-title"><span class="section-number">01 //</span> About & Technologies</h2>
         </div>
 
         <div class="bento-grid">
-            <!-- CHANGED TITLE HERE -->
             <div class="card">
                 <h3>About Me</h3>
                 <p>I'm a Software Engineering student building systems that process data at scale. While others focus on the frontend pixels, I focus on the engine room: WebSocket streams, order book reconstruction, and financial modeling.</p>
                 <p style="margin-bottom: 0;">I optimize for latency and precision. Whether it's C++ for execution or Python for analysis, I build tools that don't just work—they perform.</p>
             </div>
-            <!-- CHANGED TITLE HERE -->
             <div class="card">
                 <h3>Core Technologies</h3>
                 <p>The tools I use to build systems:</p>
@@ -527,8 +528,7 @@
 
         <!-- Projects -->
         <div class="section-header" id="projects">
-            <h2 class="section-title">Selected Works</h2>
-            <span class="section-number">02</span>
+            <h2 class="section-title"><span class="section-number">02 //</span> Selected Works</h2>
         </div>
 
         <div class="projects-container">
@@ -569,8 +569,7 @@
 
         <!-- Contact -->
         <div class="section-header" id="contact">
-            <h2 class="section-title">Get In Touch</h2>
-            <span class="section-number">03</span>
+            <h2 class="section-title"><span class="section-number">03 //</span> Get In Touch</h2>
         </div>
 
         <div class="contact-section">
@@ -605,7 +604,6 @@
         </footer>
     </div>
 
-    <!-- Background Script -->
     <script>
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -613,12 +611,9 @@
         let width, height;
         let particles = [];
         
-        // Settings
         const particleCount = 60;
         const connectionDistance = 150;
-        const mouseDistance = 200;
 
-        // Resize
         function resize() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
@@ -626,7 +621,6 @@
         window.addEventListener('resize', resize);
         resize();
 
-        // Particle Class
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
@@ -639,8 +633,6 @@
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-
-                // Bounce off edges
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
@@ -653,12 +645,10 @@
             }
         }
 
-        // Init Particles
         for (let i = 0; i < particleCount; i++) {
             particles.push(new Particle());
         }
 
-        // Animation Loop
         function animate() {
             ctx.clearRect(0, 0, width, height);
             
@@ -666,7 +656,6 @@
                 p.update();
                 p.draw();
 
-                // Connect particles
                 for (let j = index + 1; j < particles.length; j++) {
                     const p2 = particles[j];
                     const dx = p.x - p2.x;
@@ -675,7 +664,7 @@
 
                     if (dist < connectionDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist / connectionDistance})`; // Blue accent lines
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${1 - dist / connectionDistance})`; 
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
